@@ -1,0 +1,49 @@
+#!/bin/sh
+
+# List all staged Python files
+files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.py$')
+# Run Flake8 for Linking
+echo "Running Flake8 for linting……."
+flake8 $files
+
+# Run Black for formatting
+if [ -n "$files" ]; then
+    echo "Running Black for formatting..."
+        black $files
+	    git add $files   # re-add formatted files to staging
+	    fi
+	    # define pattern to search for secrets
+	    patterns=(
+	      "aws_secret_access_key"
+	        "AWS_ACCESS_KEY_ID"
+		  "password"
+		    "secret"
+		      "token"
+		        "api_key"
+			  "client_secret"
+			  )
+
+			  # Function to search for patterns in a file
+			  check_file_for_secrets() {
+			    local file="$1"
+			      for pattern in "${patterns[@]}"; do
+			          if grep -q "$pattern" "$file" >/dev/null; then
+				        echo "Potential security issue detected in file: $file"
+					      echo "Pattern matched: $pattern"
+					            echo "Commit aborted. Remove secrets before committing."
+						          return 1
+							      fi
+							        done
+								  return 0
+								  }
+
+								  # Check each staged Python file for secrets
+								  for file in $files; do
+								    if ! check_file_for_secrets "$file"; then
+								        exit 1
+									  fi
+									  done
+
+									  # If all checks pass
+									  echo "No secrets detected. Proceeding with commit."
+									  exit 
