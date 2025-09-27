@@ -1,0 +1,28 @@
+Permissions set to 700 for logger.py and script.sh.
+Running ./script.sh file to check Error logs
+staring the log checker.Press Ctrl+C for termination
+running the python script to check for errors
+Error found in the log file
+ERROR: Failed to connect to the database
+ERROR: Timeout while waiting for response
+Explicitely sleeping for interval seconds
+running the python script to check for errors
+Error found in the log file
+ERROR: Failed to connect to the database
+ERROR: Timeout while waiting for response
+Explicitely sleeping for interval seconds
+running the python script to check for errors
+Error found in the log file
+ERROR: Failed to connect to the database
+ERROR: Timeout while waiting for response
+Explicitely sleeping for interval seconds
+running the python script to check for errors
+Error found in the log file
+ERROR: Failed to connect to the database
+ERROR: Timeout while waiting for response
+Explicitely sleeping for interval seconds
+running the python script to check for errors
+Error found in the log file
+ERROR: Failed to connect to the database
+ERROR: Timeout while waiting for response
+Explicitely sleeping for interval seconds
